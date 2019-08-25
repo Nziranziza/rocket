@@ -51,7 +51,7 @@ export default class GameCanvas {
   }
 
   clear() {
-    this.context.fillStyle = '#e2fcbf';
+    this.context.fillStyle = '#BDBDBD';
     this.context.fillRect(
       0,
       0,
