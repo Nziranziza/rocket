@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My Awesome Game</title>
+    <style>
+
+      body {
+        margin: 0;
+        background-color: #000000;
+      }
+
+      canvas {
+        display: block;
+        margin: 0 auto;
+      }
+      .input, #score-wrapper {
+        margin-right:auto;
+        margin-left: auto;
+        width: 547px;
+        padding: 0px;
+      }
+      .input input, span {
+        width: 100%;
+        padding: 0px;
+        border: none;
+        height: 10vh;
+        font-size: 50px;
+        color:aquamarine;
+        text-align: center;
+      }
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+         -webkit-appearance: none; 
+          margin: 0; 
+        }
+      #score-wrapper div {
+        height: 53px;
+        display: flex;
+        align-content: space-between;
+      }
+    #replay {
+      border-radius: 50px;
+      font-size: 15px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="score-wrapper">
+      <div>
+        <span>Score:</span>
+        <span id="score"></span>
+        <button id="replay">replay</button>
+      </div>
+    </div>
+    <canvas id="main-canvas" width="720" height="1080">
+    </canvas>
+    <div class="input">
+        <input type="number" placeholder="Type in answer" id="answer"></input>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
