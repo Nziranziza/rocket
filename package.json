@@ -30,7 +30,8 @@
   "scripts": {
     "test": "jest --coverage --forceExit",
     "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "start": "node_modules/.bin/webpack-dev-server"
+    "start": "node_modules/.bin/webpack-dev-server",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
