@@ -1,36 +1,35 @@
 // @flow
-import GameCanvas from './canvas.js';
-import ToolPalette from './toolPalette.js';
-import InputHelper from './inputHelper.js';
-import GameplayGrid from './gameplayGrid.js';
+import GameCanvas from './canvas';
+import ToolPalette from './toolPalette';
+import GameplayGrid from './gameplayGrid';
+import './replayButton';
 
-const gameCanvas = new GameCanvas((document.getElementById('main-canvas') : any));
-new InputHelper(gameCanvas);
+const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 
 const grid = new GameplayGrid();
-const entities = [ grid, new ToolPalette(gameCanvas, grid) ];
+const entities = [grid, new ToolPalette(gameCanvas, grid)];
 
-grid.spawnMonster();
+grid.spawnRocket();
 
 let time = 0;
-
-Promise.all(
-  entities.map(entity => entity.load())
-).then(() => {
-  time = Date.now();
-  requestAnimationFrame(gameLoop);
-});
 
 function gameLoop() {
   const newTime = Date.now();
   const elapsedTimeInSec = (newTime - time) / 100;
   time = newTime;
-  entities.forEach(entity => {
+  entities.forEach((entity) => {
     entity.update(elapsedTimeInSec);
   });
   gameCanvas.clear();
-  entities.forEach(entity => {
+  entities.forEach((entity) => {
     entity.draw(gameCanvas);
   });
   requestAnimationFrame(gameLoop);
 }
+
+Promise.all(
+  entities.map((entity) => entity.load()),
+).then(() => {
+  time = Date.now();
+  requestAnimationFrame(gameLoop);
+});

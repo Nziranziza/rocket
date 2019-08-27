@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background-color: #000000;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+  .input, #score-wrapper {
+    margin-right:auto;
+    margin-left: auto;
+    width: 530px;
+    padding: 0px;
+  }
+  .input input, span {
+    width: 100%;
+    padding: 0px;
+    border: none;
+    height: 7vh;
+    font-size: 30px;
+    color:aquamarine;
+    text-align: center;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+     -webkit-appearance: none; 
+      margin: 0; 
+    }
+  #score-wrapper div {
+    height: 45px;
+    display: flex;
+    align-content: space-between;
+  }
+#replay {
+  border-radius: 50px;
+  font-size: 15px;
+}
