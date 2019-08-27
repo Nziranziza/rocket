@@ -5,12 +5,12 @@ export default {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.addEventListener('load', () => {
-          resolve(img);
+        resolve(img);
       }, false);
       img.addEventListener('error', () => {
-          reject(new Error('Failed to load ' + url));
+        reject(new Error(`Failed to load ${url}`));
       });
       img.src = url;
     });
-  }
-}
+  },
+};

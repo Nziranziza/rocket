@@ -6,16 +6,17 @@ const SCREEN_VIEWPORT_RATIO = window.innerHeight / VIEWPORT_HEIGHT;
 
 export default class GameCanvas {
   canvasElement: HTMLCanvasElement;
+
   context: CanvasRenderingContext2D;
 
   constructor(canvasElement: HTMLCanvasElement) {
     this.canvasElement = canvasElement;
     this.context = canvasElement.getContext('2d');
 
-    canvasElement.setAttribute('height', window.innerHeight * 0.8);
-    canvasElement.setAttribute('width', (VIEWPORT_WIDTH * SCREEN_VIEWPORT_RATIO : any));
+    canvasElement.setAttribute('height', window.innerHeight * 0.87);
+    canvasElement.setAttribute('width', (VIEWPORT_WIDTH * SCREEN_VIEWPORT_RATIO));
   }
-  
+
   drawImage(
     image: Image,
     x: number,
@@ -40,10 +41,13 @@ export default class GameCanvas {
       xAxis,
       yAxis,
       scaledWidth * SCREEN_VIEWPORT_RATIO,
-      scaledHeight * SCREEN_VIEWPORT_RATIO);
-    this.context.font = '30px Verdana';
+      scaledHeight * SCREEN_VIEWPORT_RATIO,
+    );
+    this.context.font = '20px Verdana';
     this.context.strokeStyle = 'blue';
-    this.context.strokeText(`${firstNumber} + ${secondNumber}`,xAxis,yAxis);
+    if (firstNumber && secondNumber) {
+      this.context.strokeText(`${firstNumber} + ${secondNumber}`, xAxis, yAxis);
+    }
     this.context.restore();
   }
 
@@ -53,15 +57,16 @@ export default class GameCanvas {
       0,
       0,
       this.canvasElement.clientWidth,
-      this.canvasElement.clientHeight);
+      this.canvasElement.clientHeight,
+    );
   }
-  
+
   fillRect(
     style: string,
     x: number,
     y: number,
     width: number,
-    height: number
+    height: number,
   ) {
     this.context.fillStyle = style;
     this.context.globalCompositeOperation = 'source-over';
@@ -69,7 +74,8 @@ export default class GameCanvas {
       x * SCREEN_VIEWPORT_RATIO,
       y * SCREEN_VIEWPORT_RATIO,
       width * SCREEN_VIEWPORT_RATIO,
-      height * SCREEN_VIEWPORT_RATIO);
+      height * SCREEN_VIEWPORT_RATIO,
+    );
   }
 
   writeText(
@@ -78,7 +84,7 @@ export default class GameCanvas {
     color: string,
     alignment: string,
     x: number,
-    y: number
+    y: number,
   ) {
     this.context.fillStyle = color;
     this.context.font = font;
@@ -86,17 +92,18 @@ export default class GameCanvas {
     this.context.fillText(
       text,
       x * SCREEN_VIEWPORT_RATIO,
-      y * SCREEN_VIEWPORT_RATIO);
+      y * SCREEN_VIEWPORT_RATIO,
+    );
   }
 
   get height() {
     return VIEWPORT_HEIGHT;
   }
-  
+
   get width() {
     return VIEWPORT_WIDTH;
   }
-  
+
   get viewportRatio() {
     return SCREEN_VIEWPORT_RATIO;
   }
