@@ -16,9 +16,9 @@ export default class Score {
   }
 
   saveHighestScore(score: number) {
-    if (score > this.highestScore || this.highestScore === null) {
+    if (score > this.highestScore || isNaN(this.highestScore)) {
       localStorage.setItem('highestScore', score);
-      this.displayHighestScore = score;
+      this.displayHighestScore(score);
     }
   }
 
