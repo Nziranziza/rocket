@@ -18,9 +18,12 @@ body {
     padding: 0px;
     border: none;
     height: 7vh;
-    font-size: 30px;
+    font-size: 20px;
     color:aquamarine;
     text-align: center;
+  }
+  span {
+    padding-top: 10px;
   }
   input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { 

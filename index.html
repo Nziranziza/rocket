@@ -1,23 +1,28 @@
 <!doctype html>
 <html>
-  <head>
-    <title>RocketIT</title>
-    <link rel="stylesheet" type="text/css" href="./src/css/style.css" media="screen" />
-    <link rel="shortcut icon" href="./images/rocket.png" type="image/x-icon">
-  </head>
-  <body>
-    <div id="score-wrapper">
-      <div>
-        <span>Score:</span>
-        <span id="score"></span>
-        <button id="replay">replay</button>
-      </div>
+
+<head>
+  <title>RocketIT</title>
+  <link rel="stylesheet" type="text/css" href="./src/css/style.css" media="screen" />
+  <link rel="shortcut icon" href="./images/rocket.png" type="image/x-icon">
+</head>
+
+<body>
+  <div id="score-wrapper">
+    <div>
+      <span>Highest score:</span>
+      <span id="highest-score"></span>
+      <span>Current score:</span>
+      <span id="score"></span>
+      <button id="replay">replay</button>
     </div>
-    <canvas id="main-canvas" width="720" height="1080">
-    </canvas>
-    <div class="input">
-        <input type="number" placeholder="Type in answer" id="answer"></input>
-    </div>
-    <script src="main.js"></script>
-  </body>
+  </div>
+  <canvas id="main-canvas" width="720" height="1080">
+  </canvas>
+  <div class="input">
+    <input type="number" placeholder="Type in answer" id="answer"></input>
+  </div>
+  <script src="main.js"></script>
+</body>
+
 </html>
