@@ -45,6 +45,7 @@ export default class GameplayGrid extends Entity {
 
     if (this.gameState === 'LOST') {
       canvas.writeText('You lose!', '72px sans-serif', '#FF6347', 'center', canvas.width / 2, canvas.height / 2);
+      this.score.saveHighestScore(this.score.value);
     }
 
     if (this.gameState === 'WIN') {
