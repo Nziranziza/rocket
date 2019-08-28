@@ -1,12 +1,13 @@
-export default class Replay {
-    constructor(replayButton) {
-        this.replayButton = replayButton;
-        this.replayButton.addEventListener('click', () => {
-            this.replay();
-        });
-    }
+class Replay {
+  constructor() {
+    this.replayButton = document.getElementById('replay');
+    this.replayButton.addEventListener('click', () => {
+      this.replay();
+    });
+  }
 
-    replay() {
-        document.location.reload()
-    }
+  replay() {
+    document.location.reload();
+  }
 }
+export default new Replay();

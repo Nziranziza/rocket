@@ -1,60 +1,58 @@
 // @flow
 
-import assets from './assets.js';
-import Entity from './entity.js';
-import GameCanvas from './canvas.js';
-import Monster from './rocket.js';
-import { type Bounds } from './mathTypes.js';
+import Entity from './entity';
+import GameCanvas from './canvas';
+import Rocket from './rocket';
 import Answer from './answerField';
 import Score from './score';
-import Replay from './replayButton';
 
 const COLUMN_SIZE = 120;
 const ROW_SIZE = 120;
 const NUM_COLUMNS = 6;
 const NUM_ROWS = 8;
 
-new Replay(document.getElementById('replay'));
 
 export default class GameplayGrid extends Entity {
-  monsters: Array<Monster>;
+  rockets: Array<Rocket>;
+
   gameState;
-  firstNumber;
-  lastNumber;
+
+  firstNumber: number;
+
+  lastNumber: number;
 
   constructor() {
     super();
-    this.monsters = [];
-    this.answerField = new Answer(document.getElementById('answer'));
-    this.score = new Score(document.getElementById('score'));
+    this.rockets = [];
+    this.answerField = new Answer();
+    this.score = new Score();
   }
 
   load() {
   }
 
 
-  spawnMonster() {
+  spawnRocket() {
     this.firstNumber = Math.floor(Math.random() * 10) + 1;
     this.lastNumber = Math.floor(Math.random() * 10) + 1;
     const column = Math.floor(Math.random() * NUM_COLUMNS);
-    const monster = new Monster(column * COLUMN_SIZE, this.firstNumber, this.lastNumber);
-    monster.load().then(() => this.monsters.push(monster));
+    const rocket = new Rocket(column * COLUMN_SIZE, this.firstNumber, this.lastNumber);
+    rocket.load().then(() => this.rockets.push(rocket));
   }
-  
+
   draw(canvas: GameCanvas) {
-    this.monsters.forEach(monster => monster.draw(canvas));
+    this.rockets.forEach((rocket) => rocket.draw(canvas));
 
     if (this.gameState === 'LOST') {
       canvas.writeText('You lose!', '72px sans-serif', '#FF6347', 'center', canvas.width / 2, canvas.height / 2);
     }
 
     if (this.gameState === 'WIN') {
-      // canvas.writeText('You Win!', '72px sans-serif', '#228B22', 'center', canvas.width / 2, canvas.height / 2);
-      this.monsters = [];
+      this.rockets = [];
       this.gameState = 'PLAYING';
-      this.spawnMonster();
-      this.answerField.setValue();
-      this.score.setValue();
+      this.spawnRocket();
+      this.answerField.clear();
+      this.score.increaseValueBy(5);
     }
   }
 
@@ -63,25 +61,24 @@ export default class GameplayGrid extends Entity {
       return;
     }
 
-    this.monsters.forEach(monster => {
+    this.rockets.forEach((rocket) => {
+      rocket.update(elapsedTime);
 
-      monster.update(elapsedTime);
-
-      if (monster.yPos > 735) {
+      if (rocket.yPos > NUM_ROWS * ROW_SIZE) {
         this.gameState = 'LOST';
       }
 
-      if(this.answerField.getValue() == this.getAnswer() && this.answerField.isSubmitted) {
-        this.gameState = 'WIN';
+      if (this.answerField.isSubmitted) {
+        this.gameState = this.isCorrectAnswer() ? 'WIN' : 'LOST';
       }
-
-      if(this.answerField.getValue() != this.getAnswer() && this.answerField.isSubmitted) {
-        this.gameState = 'LOST';
-      }
-
     });
   }
-  getAnswer () {
+
+  get answer() {
     return this.firstNumber + this.lastNumber;
+  }
+
+  isCorrectAnswer() {
+    return this.answerField.value === this.answer;
   }
 }
