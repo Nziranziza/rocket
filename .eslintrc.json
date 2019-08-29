@@ -3,7 +3,9 @@
   "parser": "babel-eslint",
   "plugins": ["flowtype"],
   "rules": {
-    "class-methods-use-this": 0
+    "class-methods-use-this": 0,
+    "no-restricted-globals": 0,
+    "no-eval": 0
   },
   "env": {
     "browser": true,

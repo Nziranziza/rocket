@@ -3,7 +3,7 @@
 import assets from './assets';
 import Entity from './entity';
 import GameCanvas from './canvas';
-import { type Bounds, type Point } from './mathTypes';
+import { type Bounds, type Point } from './helper/mathTypes';
 
 export default class ToolPalette extends Entity {
   wasMouseDown: boolean;
