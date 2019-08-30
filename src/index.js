@@ -2,7 +2,6 @@
 import GameCanvas from './canvas';
 import ToolPalette from './toolPalette';
 import GameplayGrid from './gameplayGrid';
-import './replayButton';
 import updateTime from './helper/updateTime';
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));

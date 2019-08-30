@@ -1,5 +1,6 @@
-class Replay {
+export default class Replay {
   constructor() {
+    this.clicked = false;
     this.replayButton = document.getElementById('replay');
     this.replayButton.addEventListener('click', () => {
       this.replay();
@@ -7,7 +8,6 @@ class Replay {
   }
 
   replay() {
-    document.location.reload();
+    this.clicked = true;
   }
 }
-export default new Replay();
