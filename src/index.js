@@ -3,6 +3,7 @@ import GameCanvas from './canvas';
 import ToolPalette from './toolPalette';
 import GameplayGrid from './gameplayGrid';
 import './replayButton';
+import updateTime from './helper/updateTime';
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 
@@ -15,7 +16,7 @@ let time = 0;
 
 function gameLoop() {
   const newTime = Date.now();
-  const elapsedTimeInSec = (newTime - time) / 100;
+  const elapsedTimeInSec = (newTime - time) / updateTime();
   time = newTime;
   entities.forEach((entity) => {
     entity.update(elapsedTimeInSec);
