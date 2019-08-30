@@ -28,6 +28,7 @@ export default class GameCanvas {
     compositeOperation: string = 'source-over',
     firstNumber,
     secondNumber,
+    operator,
   ) {
     const scaledWidth = width * scale;
     const scaledHeight = height * scale;
@@ -46,7 +47,7 @@ export default class GameCanvas {
     this.context.font = '20px Verdana';
     this.context.strokeStyle = 'blue';
     if (firstNumber && secondNumber) {
-      this.context.strokeText(`${firstNumber} + ${secondNumber}`, xAxis, yAxis);
+      this.context.strokeText(`${firstNumber} ${operator} ${secondNumber}`, xAxis, yAxis);
     }
     this.context.restore();
   }

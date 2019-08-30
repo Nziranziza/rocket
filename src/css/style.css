@@ -18,12 +18,15 @@ body {
     padding: 0px;
     border: none;
     height: 7vh;
-    font-size: 20px;
+    font-size: 15px;
     color:aquamarine;
     text-align: center;
   }
   span {
     padding-top: 10px;
+  }
+  select {
+    margin-top: 10px;
   }
   input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { 
@@ -36,6 +39,7 @@ body {
     align-content: space-between;
   }
 #replay {
-  border-radius: 50px;
-  font-size: 15px;
+  border-radius: 25px;
+  font-size: 10px;
+  margin-left: 15px;
 }

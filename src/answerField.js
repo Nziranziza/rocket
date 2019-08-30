@@ -7,7 +7,7 @@ export default class Answer {
         this.isSubmitted = true;
       }
     });
-    this.answerField.focus();
+    this.focus();
   }
 
   get value() {
@@ -17,5 +17,9 @@ export default class Answer {
   clear() {
     this.answerField.value = '';
     this.isSubmitted = false;
+  }
+
+  focus() {
+    this.answerField.focus();
   }
 }

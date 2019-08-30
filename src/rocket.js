@@ -21,7 +21,7 @@ export default class Rocket extends Entity {
 
   state: State;
 
-  constructor(xPos: number, firstNumber: number, lastNumber: number) {
+  constructor(xPos: number, firstNumber: number, lastNumber: number, operator: string) {
     super();
     this.xPosition = xPos;
     this.yPosition = 0;
@@ -30,6 +30,7 @@ export default class Rocket extends Entity {
     this.state = 'DESCENDING';
     this.firstNumber = firstNumber;
     this.secondNumber = lastNumber;
+    this.operator = operator;
   }
 
   load() {
@@ -50,6 +51,7 @@ export default class Rocket extends Entity {
       'source-over',
       this.firstNumber,
       this.secondNumber,
+      this.operator,
     );
   }
 
