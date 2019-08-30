@@ -8,7 +8,7 @@ export default class Operations {
   }
 
   get operator(): string {
-    this.currentOperator = localStorage.getItem('currentOperator');
+    this.currentOperator = this.defaultOperatorIndex;
     if (this.currentOperator !== '4') {
       return this.operators[this.currentOperator];
     }
@@ -22,15 +22,24 @@ export default class Operations {
   }
 
   set initialOperator(value: string) {
-    if (isNaN(localStorage.getItem('currentOperator'))) {
+    if (!this.isValidOperator(this.defaultOperatorIndex)) {
       this.operator = value;
     }
   }
 
-  get operatorIndex() {
-    if (localStorage.getItem('currentOperator') !== '4') {
+  get operatorIndex(): number {
+    if (this.defaultOperatorIndex !== '4') {
       return this.operators.indexOf(this.operator);
     }
     return 4;
+  }
+
+  isValidOperator(operator: string): boolean {
+    const operatorIndex = parseInt(operator, 10);
+    return this.operators.length >= operatorIndex && operatorIndex > -1;
+  }
+
+  get defaultOperatorIndex() {
+    return localStorage.getItem('currentOperator');
   }
 }
