@@ -4,6 +4,7 @@ import Entity from './entity';
 import GameCanvas from './canvas';
 import Rocket from './rocket';
 import Answer from './answerField';
+import Replay from './replayButton';
 import Score from './score';
 import Operations from './operations';
 import formatOperator from './helper/formatOperation';
@@ -29,6 +30,7 @@ export default class GameplayGrid extends Entity {
     super();
     this.rockets = [];
     this.answerField = new Answer();
+    this.replay = new Replay();
     this.score = new Score();
     this.operations = new Operations();
     this.displayOperator = document.getElementById('operations');
@@ -70,6 +72,13 @@ export default class GameplayGrid extends Entity {
     if (this.gameState === 'WIN') {
       this.getNextRocket();
       this.score.increaseValueBy(5);
+    }
+
+    if (this.replay.clicked) {
+      this.answerField.focus();
+      this.getNextRocket();
+      this.score.resetScore();
+      this.replay.clicked = false;
     }
   }
 

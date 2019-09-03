@@ -37,4 +37,9 @@ export default class Score {
   set displayHighestScore(value: number) {
     this.highestScoreWrapper.textContent = value;
   }
+
+  resetScore() {
+    this.score = 0;
+    this.displayCurrentScore = this.score;
+  }
 }
