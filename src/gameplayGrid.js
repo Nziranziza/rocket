@@ -26,6 +26,8 @@ export default class GameplayGrid extends Entity {
 
   currentOperation: string;
 
+  booSound: any;
+
   constructor() {
     super();
     this.rockets = [];
@@ -41,6 +43,7 @@ export default class GameplayGrid extends Entity {
       this.getNextRocket();
       this.answerField.focus();
     });
+    this.booSound = new Audio('../audio/crowd-boo-sound.mp3');
   }
 
   load() {
@@ -91,11 +94,11 @@ export default class GameplayGrid extends Entity {
       rocket.update(elapsedTime);
 
       if (rocket.yPos > NUM_ROWS * ROW_SIZE) {
-        this.gameState = 'LOST';
+        this.gameState = this.playBooSound();
       }
 
       if (this.answerField.isSubmitted) {
-        this.gameState = this.isCorrectAnswer() ? 'WIN' : 'LOST';
+        this.gameState = this.isCorrectAnswer() ? 'WIN' : this.playBooSound();
       }
     });
   }
@@ -113,5 +116,10 @@ export default class GameplayGrid extends Entity {
     this.gameState = 'PLAYING';
     this.spawnRocket();
     this.answerField.clear();
+  }
+
+  playBooSound(): string {
+    this.booSound.play();
+    return 'LOST';
   }
 }
