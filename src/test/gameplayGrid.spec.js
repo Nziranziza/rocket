@@ -37,4 +37,11 @@ describe('Test gameplayGrid', () => {
     gameplayGrid.getNextRocket();
     expect(gameplayGrid.rockets.length).toEqual(0);
   });
+
+  it('should play boo sound', () => {
+    const spy = jest.spyOn(gameplayGrid.booSound, 'play');
+    const gameState = gameplayGrid.playBooSound();
+    expect(spy).toHaveBeenCalled();
+    expect(gameState).toEqual('LOST');
+  });
 });

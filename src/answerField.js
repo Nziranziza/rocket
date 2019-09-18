@@ -5,9 +5,14 @@ export default class Answer {
     this.answerField.addEventListener('keydown', ({ key }) => {
       if (key === 'Enter') {
         this.isSubmitted = true;
+        this.gunShoot.play();
+      } else {
+        this.loadGun.play();
       }
     });
     this.focus();
+    this.loadGun = new Audio('../audio/gun-sound.m4a');
+    this.gunShoot = new Audio('../audio/gunshoot-sound.m4a');
   }
 
   get value() {
