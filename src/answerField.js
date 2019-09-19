@@ -1,3 +1,4 @@
+
 export default class Answer {
   constructor() {
     this.isSubmitted = false;

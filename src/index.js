@@ -3,6 +3,9 @@ import GameCanvas from './canvas';
 import ToolPalette from './toolPalette';
 import GameplayGrid from './gameplayGrid';
 import updateTime from './helper/updateTime';
+import { VIEWPORT_WIDTH, SCREEN_VIEWPORT_RATIO } from './helper/getScreenSize';
+
+document.getElementById('playing-space').style.width = `${VIEWPORT_WIDTH * SCREEN_VIEWPORT_RATIO}px`;
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 

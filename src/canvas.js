@@ -1,8 +1,6 @@
 // @flow
 
-const VIEWPORT_HEIGHT = 1080;
-const VIEWPORT_WIDTH = 720;
-const SCREEN_VIEWPORT_RATIO = window.innerHeight / VIEWPORT_HEIGHT;
+import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH, SCREEN_VIEWPORT_RATIO } from './helper/getScreenSize';
 
 export default class GameCanvas {
   canvasElement: HTMLCanvasElement;
