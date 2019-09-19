@@ -70,7 +70,7 @@ export default class GameplayGrid extends Entity {
     this.rockets.forEach((rocket) => rocket.draw(canvas));
 
     if (this.gameState === 'LOST') {
-      canvas.writeText('You lose!', '72px sans-serif', '#FF6347', 'center', canvas.width / 2, canvas.height / 2);
+      canvas.writeText('You lose!', '50px sans-serif', '#FF6347', 'left', canvas.width / 2, canvas.height / 2);
       this.score.saveHighestScore(this.score.value);
     }
 

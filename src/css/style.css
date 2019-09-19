@@ -2,12 +2,7 @@ body {
     margin: 0;
     background-color: #000000;
   }
-
-  canvas {
-    display: block;
-    margin: 0 auto;
-  }
-  .input, #score-wrapper {
+  #score-wrapper {
     margin-right:auto;
     margin-left: auto;
     width: 530px;
@@ -42,4 +37,8 @@ body {
   border-radius: 25px;
   font-size: 10px;
   margin-left: 15px;
+}
+#playing-space {
+  display: block;
+  margin: 0 auto;
 }
