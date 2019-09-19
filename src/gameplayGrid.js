@@ -8,6 +8,7 @@ import Replay from './replayButton';
 import Score from './score';
 import Operations from './operations';
 import formatOperator from './helper/formatOperation';
+import generateOperands from './helper/generateOperands';
 
 const COLUMN_SIZE = 120;
 const ROW_SIZE = 120;
@@ -52,8 +53,9 @@ export default class GameplayGrid extends Entity {
 
   spawnRocket() {
     this.currentOperation = this.operations.operator;
-    this.firstNumber = Math.floor(Math.random() * 10) + 1;
-    this.lastNumber = Math.floor(Math.random() * 10) + 1;
+    const { firstNumber, lastNumber } = generateOperands(this.currentOperation);
+    this.firstNumber = firstNumber;
+    this.lastNumber = lastNumber;
     const column = Math.floor(Math.random() * NUM_COLUMNS);
     const rocket = new Rocket(
       column * COLUMN_SIZE,
