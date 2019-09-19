@@ -11,8 +11,8 @@ export default class Answer {
       }
     });
     this.focus();
-    this.loadGun = new Audio('../audio/gun-sound.m4a');
-    this.gunShoot = new Audio('../audio/gunshoot-sound.m4a');
+    this.loadGun = new Audio('./audio/gun-sound.m4a');
+    this.gunShoot = new Audio('./audio/gunshoot-sound.m4a');
   }
 
   get value() {
