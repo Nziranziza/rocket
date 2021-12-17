@@ -26,7 +26,7 @@ describe('Test Canvas class', () => {
 
   it('should draw on canvas with text', () => {
     const spy1 = jest.spyOn(canvas.context, 'drawImage');
-    const spy2 = jest.spyOn(canvas.context, 'strokeText');
+    const spy2 = jest.spyOn(canvas.context, 'fillText');
     canvas.drawImage(
       new Image(),
       3,
