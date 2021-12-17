@@ -5,33 +5,50 @@
   <title>RocketIT</title>
   <link rel="stylesheet" type="text/css" href="./src/css/style.css" media="screen" />
   <link rel="shortcut icon" href="./images/rocket.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="score-wrapper">
-    <div>
-      <span>Highest score:</span>
-      <span id="highest-score"></span>
-      <span>Current score:</span>
-      <span id="score"></span>
-      <select id="operations">
-        <option value=0>Addition</option>
-        <option value=1>Subtraction</option>
-        <option value=2>Multiplication</option>
-        <option value=3>Division</option>
-        <option value=4>Random</option>
-      </select>
-      <button id="replay">replay</button>
+  <div id="playing-space" class="container shadow overflow-hidden">
+    <div class="flex justify-between align-center">
+      <div class="flex text-secondary m-3">
+        <div class="flex mr-3">
+          <span class="mr-1">Highest score:</span>
+          <span id="highest-score"></span>
+        </div>
+        <div class="flex">
+          <span class="mr-1">Current score:</span>
+          <span id="score"></span>
+        </div>
+      </div>
+      <div class="m-3 flex">
+        <select id="operations" class="text-secondary bg-primary">
+          <option value=0>Addition</option>
+          <option value=1>Subtraction</option>
+          <option value=2>Multiplication</option>
+          <option value=3>Division</option>
+          <option value=4>Random</option>
+        </select>
+        <button id="replay" class="ml-2 p-1 flex circle bg-secondary border-0">
+          <i data-feather="refresh-cw" class="text-primary"></i>
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-column">
+      <canvas id="main-canvas" width="720" height="1080">
+      </canvas>
+      <div class="input">
+        <input type="number" placeholder="Type in answer" id="answer"></input>
+      </div>
     </div>
   </div>
-  <div id="playing-space">
-      <canvas id="main-canvas" width="720" height="1080">
-        </canvas>
-        <div class="input">
-          <input type="number" placeholder="Type in answer" id="answer"></input>
-        </div>
-  </div>
   <script src="main.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace()
+  </script>
 </body>
 
 </html>

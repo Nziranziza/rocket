@@ -11,7 +11,7 @@ export default class GameCanvas {
     this.canvasElement = canvasElement;
     this.context = canvasElement.getContext('2d');
 
-    canvasElement.setAttribute('height', window.innerHeight * 0.87);
+    canvasElement.setAttribute('height', window.innerHeight * 0.85);
     canvasElement.setAttribute('width', (VIEWPORT_WIDTH * SCREEN_VIEWPORT_RATIO));
   }
 
@@ -42,16 +42,16 @@ export default class GameCanvas {
       scaledWidth * SCREEN_VIEWPORT_RATIO,
       scaledHeight * SCREEN_VIEWPORT_RATIO,
     );
-    this.context.font = '20px Verdana';
-    this.context.strokeStyle = 'blue';
+    this.context.font = '16px Roboto';
+    this.context.fillStyle = '#031f53';
     if (firstNumber && secondNumber) {
-      this.context.strokeText(`${firstNumber} ${operator} ${secondNumber}`, xAxis, yAxis);
+      this.context.fillText(`${firstNumber} ${operator} ${secondNumber}`, xAxis, yAxis - 5);
     }
     this.context.restore();
   }
 
   clear() {
-    this.context.fillStyle = '#e2fcbf';
+    this.context.fillStyle = '#00CAA0';
     this.context.fillRect(
       0,
       0,
